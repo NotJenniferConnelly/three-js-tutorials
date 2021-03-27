@@ -2,7 +2,6 @@ import React, { useRef } from "react"
 
 import styled from "styled-components"
 import { Canvas, useFrame } from "react-three-fiber"
-import { Box } from "@react-three/drei"
 
 const Container = styled.div`
   width: 100vw;
@@ -10,7 +9,7 @@ const Container = styled.div`
   background: #333;
 `
 
-const Boxed = ({ position, color }) => {
+const Cube = ({ position, color }) => {
   const mesh = useRef(null)
   useFrame(() => { mesh.current.rotation.x = mesh.current.rotation.y += 0.01 })
 
@@ -21,6 +20,21 @@ const Boxed = ({ position, color }) => {
     </mesh>
   )
 }
+
+const Sphere = ({ position, color }) => {
+  const mesh = useRef(null)
+  useFrame(() => { mesh.current.rotation.x = mesh.current.rotation.y += 0.01 })
+
+  return (
+    <mesh castShadow position={position} ref={mesh}>
+      <sphereGeometry attach="geometry" args={[1, 32, 32]} />
+      <meshStandardMaterial attach="material" color={color} />
+    </mesh>
+  )
+
+}
+
+
 
 const Application = () => {
   return (
@@ -61,9 +75,10 @@ const Application = () => {
         </group>
       
         {/* Objects */}
-        <Boxed position={[0,1,0]} color="#f00" />
-        <Boxed position={[0,1,-2]} color="#0f0" />
-        <Boxed position={[0,1,2]} color="#00f" />
+        <Cube position={[0,1,0]} color="#f00" />
+        <Cube position={[0,1,-2]} color="#0f0" />
+        <Cube position={[0,1,2]} color="#00f" />
+        <Sphere position={[3,1,2]} color="#000" />
       </Canvas>
     </Container>
   )
