@@ -15,10 +15,9 @@ const Boxed = ({ position, color }) => {
   useFrame(() => { mesh.current.rotation.x = mesh.current.rotation.y += 0.01 })
 
   return (
-    <mesh position={position} ref={mesh}>
-      <Box>
-        <meshStandardMaterial attach="material" color={color} />
-      </Box>
+    <mesh castShadow position={position} ref={mesh}>
+      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+      <meshStandardMaterial attach="material" color={color} />
     </mesh>
   )
 }
@@ -26,10 +25,15 @@ const Boxed = ({ position, color }) => {
 const Application = () => {
   return (
     <Container>
-      <Canvas colorManagement camera={{ position: [-10, 2, 10], fov: 60 }}>
+      <Canvas 
+        colorManagement 
+        shadowMap
+        camera={{ position: [-10, 2, 10], fov: 60 }}
+      >
         {/* Lighting */}
         <ambientLight intensity={0.2} />
         <directionalLight
+          castShadow
           position={[0, 10, 0]}
           intensity={1}
           shadow-mapSize-width={1024}
@@ -45,16 +49,21 @@ const Application = () => {
 
         {/* Plane */}
         <group>
-          <mesh rotation={[-Math.PI / 2, 0, 0]} intensity={0.5}>
+          <mesh 
+            receiveShadow
+            rotation={[-Math.PI / 2, 0, 0]} 
+            intensity={0.5}
+          >
             <planeBufferGeometry attach="geometry" args={[100, 100]} />
+            <shadowMaterial attach="material" opacity={0.5} />
             <meshStandardMaterial attach="material" color="#000" />
           </mesh>
         </group>
       
         {/* Objects */}
-        <Boxed position={[0,0,0]} color="#f00" />
-        <Boxed position={[0,0,-2]} color="#0f0" />
-        <Boxed position={[0,0,2]} color="#00f" />
+        <Boxed position={[0,1,0]} color="#f00" />
+        <Boxed position={[0,1,-2]} color="#0f0" />
+        <Boxed position={[0,1,2]} color="#00f" />
       </Canvas>
     </Container>
   )
