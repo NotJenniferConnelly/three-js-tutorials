@@ -15,7 +15,10 @@ const Application = () => {
   return (
     <Container>
       <Header />
-      <Canvas>
+      <Canvas
+        colorManagement
+        camera={{ position: [0, 0, 120], fov: 70 }}
+      >
       </Canvas>
     </Container>
   )
