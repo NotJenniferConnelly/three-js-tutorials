@@ -3,7 +3,8 @@ import React, { Suspense } from "react"
 import styled from "styled-components"
 
 import Header from "./Header"
-import { Canvas } from "react-three-fiber"
+import { Canvas, useLoader } from "react-three-fiber"
+import * as THREE from "three"
 import { Section } from "./Section"
 import { Html, useGLTF } from "@react-three/drei"
 
@@ -16,18 +17,28 @@ const Container = styled.div`
   background: #444;
 `
 
-const Model = () => {
-  const gltf = useGLTF('/armchairYellow.gltf', true)
+const Lights = () => {
   return (
-    <primitive object={gltf.scene} dispose={null} />
+    <>
+      <ambientLight intensity={0.3} />
+      <directionalLight position={[10, 10, 5]} intensity={1} />
+    </>
   )
+}
+
+const Model = () => {
+  const gltf = useGLTF('/scene_001.gltf', true)
+  return <primitive object={gltf.scene} dispose={null} />
 }
 
 const HTMLContent = () => {
   return (
     <Section factor={1.5} offset={1}>
-      <group position={[-5, 250, 0]}>
-        <mesh>
+      <group position={[0, 250, 0]}>
+        <mesh 
+          position={[0, -15, 10]}
+          scale={[4, 4, 4]}
+        >
           <Model />
         </mesh>
       </group>
@@ -43,6 +54,7 @@ const Application = () => {
         colorManagement
         camera={{ position: [0, 0, 120], fov: 70 }}
       >
+        <Lights />
         <Suspense fallback={null}>
           <HTMLContent />
         </Suspense>
