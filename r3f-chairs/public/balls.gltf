@@ -1,0 +1,209 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.5.17",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Tip",
+            "rotation" : [
+                0.1217716857790947,
+                0.6852447986602783,
+                0.4623740315437317,
+                0.5493828654289246
+            ],
+            "scale" : [
+                0.7491167187690735,
+                0.6113302707672119,
+                0.6506714224815369
+            ],
+            "translation" : [
+                0.34667733311653137,
+                4.647252082824707,
+                3.1535329818725586
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Material.003",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.8000000715255737,
+                    0.23619036376476288,
+                    0.15130330622196198,
+                    1
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "Material.001",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.5931035280227661,
+                    0.2323397994041443,
+                    0.1211443692445755,
+                    1
+                ],
+                "metallicFactor" : 0.4434782564640045
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Sphere.001",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "indices" : 7,
+                    "material" : 1
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 39800,
+            "max" : [
+                1.0000009536743164,
+                1.2191203832626343,
+                1.0099456310272217
+            ],
+            "min" : [
+                -1.0820057392120361,
+                -1,
+                -1
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 39800,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 39800,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 59400,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 91960,
+            "max" : [
+                1.3426271677017212,
+                1.2054615020751953,
+                0.9634294509887695
+            ],
+            "min" : [
+                -3.1470913887023926,
+                -10.633399963378906,
+                -6.791081428527832
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 91960,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 91960,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5125,
+            "count" : 137508,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 477600,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 477600,
+            "byteOffset" : 477600
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 318400,
+            "byteOffset" : 955200
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 118800,
+            "byteOffset" : 1273600
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1103520,
+            "byteOffset" : 1392400
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1103520,
+            "byteOffset" : 2495920
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 735680,
+            "byteOffset" : 3599440
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 550032,
+            "byteOffset" : 4335120
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 4885152,
+            "uri" : "balls.bin"
+        }
+    ]
+}

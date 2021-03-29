@@ -1,12 +1,12 @@
-import React, { Suspense } from "react"
+import React, { Suspense, useRef } from "react"
 
 import styled from "styled-components"
 
 import Header from "./Header"
-import { Canvas, useLoader } from "react-three-fiber"
+import { Canvas, useLoader, useFrame } from "react-three-fiber"
 import * as THREE from "three"
 import { Section } from "./Section"
-import { Html, useGLTF } from "@react-three/drei"
+import { Html, useGLTF, PerspectiveCamera } from "@react-three/drei"
 
 const Container = styled.div`
   display: flex;
@@ -27,20 +27,31 @@ const Lights = () => {
 }
 
 const Model = () => {
-  const gltf = useGLTF('/scene_001.gltf', true)
+  const gltf = useGLTF('/balls.gltf', true)
   return <primitive object={gltf.scene} dispose={null} />
 }
 
 const HTMLContent = () => {
+  const cam = useRef(null)
+  useFrame((state) => {
+    cam.current.position.z = 10 + Math.sin(state.clock.getElapsedTime() * 1.5) * 2
+    cam.current.position.x = 0 + Math.sin(state.clock.getElapsedTime() * 1.5) * 2
+    cam.current.position.y = 0 + Math.sin(state.clock.getElapsedTime() * 1.5) * 2
+  })
   return (
     <Section factor={1.5} offset={1}>
       <group position={[0, 250, 0]}>
+        <PerspectiveCamera
+          ref={cam}
+          position={[0,0,0]}
+        >
         <mesh 
           position={[0, -15, 10]}
           scale={[4, 4, 4]}
         >
           <Model />
         </mesh>
+        </PerspectiveCamera>
       </group>
     </Section>
   )
